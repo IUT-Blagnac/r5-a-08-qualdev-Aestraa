@@ -24,6 +24,70 @@ Feature: Is it Friday yet?
 ```
 
 .Image des tests de la feature
-image::img/test.png[Tests de la feature]
+image::img/testTP1.png[Tests de la feature]
 
-== TP2...
+== TP2
+
+.Contenu de Order.java
+```
+import cucumber.api.junit.Cucumber;
+import org.junit.runner.RunWith;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RunWith(Cucumber.class)
+public class RunCucumberTest {
+}
+
+class Order {
+    private String owner;
+    private String target;
+    private List<String> cocktails;
+    private String message;
+
+    public Order() {
+        this.cocktails = new ArrayList<>();
+    }
+
+    public void declareOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public void declareTarget(String target) {
+        this.target = target;
+    }
+
+    public List<String> getCocktails() {
+        return cocktails;
+    }
+
+    public void addCocktail(String cocktailName) {
+        cocktails.add(cocktailName);
+    }
+
+    public void nbrCocktail(int numberOfCocktails) {
+        this.cocktails.clear(); // Clear existing cocktails if you only want the number specified
+        for (int i = 0; i < numberOfCocktails; i++) {
+            addCocktail("cocktail " + (i + 1)); // Add a unique name to each cocktail
+        }
+    }
+
+    public void addMessage(String message) {
+        this.message = message;
+    }
+
+    public String getTicketMessage() {
+        return "From " + owner + " to " + target + ": " + message;
+    }
+}
+```
+
+.Image des tests de la feature
+image::img/testTP2.png[Tests de la feature]
+
+== TP3
+
+...
+
+
