@@ -11,7 +11,8 @@ Ce dépôt concerne les rendus de mailto:yanis.moiny@etu.univ-tlse2.fr[Moiny Yan
 == TP1
 
 .Contenu de is_it_friday_yet.feature
-```
+[source,gherkin]
+----
 Feature: Is it Friday yet?
   Everybody wants to know when it's Friday
   
@@ -25,7 +26,7 @@ Feature: Is it Friday yet?
     | Friday        | TGIF   |
     | Sunday        | Nope   |
     | anything else | Nope   |
-```
+----
 
 .Image des tests de la feature
 image::img/testTP1.png[Tests de la feature]
@@ -33,7 +34,8 @@ image::img/testTP1.png[Tests de la feature]
 == TP2
 
 .Contenu de Order.java
-```
+[source,java]
+----
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
@@ -85,7 +87,7 @@ class Order {
         return "From " + owner + " to " + target + ": " + message;
     }
 }
-```
+----
 
 .Image des tests de la feature
 image::img/testTP2.png[Tests de la feature]
@@ -95,7 +97,8 @@ image::img/testTP2.png[Tests de la feature]
 TIP: Le but ici est de faire un test de la fonctionnalité de la liste de courses. C'est à dire que l'on va tester si l'ajout d'un élément dans la liste de courses fonctionne, si la suppression d'un élément fonctionne, si l'ajout d'un élément déjà présent dans la liste de courses fonctionne.
 
 .Contenu de shopping_list.feature
-```
+[source,gherkin]
+----
 Feature: Shopping List Verification
 
   Scenario: Checking the shopping list
@@ -124,10 +127,11 @@ Feature: Shopping List Verification
       | milk  | add      | see 'milk' should be displayed in my shopping list           |
       | milk  | add      | see a message indicating that 'milk' is already on the list  |
       | milk  | remove   | see 'milk' should no longer be displayed in my shopping list |
-```
+----
 
 .Contenu de shopping_list_steps.py
-```
+[source,python]
+----
 from behave import given, when, then, step
 from assertpy import assert_that
 
@@ -197,7 +201,7 @@ def step_impl(context, expectation, item):
         assert_that(message).is_equal_to(f"{item} is already on the list")
     elif expectation == "see 'milk' should no longer be displayed in my shopping list":
         assert_that(shopping_list).does_not_contain(item)
-```
+----
 
 .Image montrant le pourcentage et le temps d'exécution de tests réussis
 image::img/testPYTHONTP3_1.png[Tests de la feature]
@@ -210,7 +214,8 @@ image::img/testPYTHONTP3_2.png[Tests de la feature]
 TIP: Le but ici est de faire le même test que précédemment mais en JAVA afin de découvrir comment générer des rapports de tests en JAVA.
 
 .Contenu de shopping_list.feature
-```
+[source,gherkin]
+----
 Feature: Shopping List Verification
 
   Scenario: Checking the shopping list
@@ -239,10 +244,11 @@ Feature: Shopping List Verification
       | milk  | add      | see 'milk' should be displayed in my shopping list           |
       | milk  | add      | see a message indicating that 'milk' is already on the list  |
       | milk  | remove   | see 'milk' should no longer be displayed in my shopping list |
-```
+----
 
 .Contenu de ShoppingListSteps.java
-```
+[source,java]
+----
 package stepdefs;
 
 import static org.junit.Assert.*;
@@ -332,7 +338,7 @@ public class ShoppingListSteps {
         }
     }
 }
-```
+----
 
 .Image montrant le pourcentage de tests réussis
 image::img/testJAVATP3_1.png[Tests de la feature]
